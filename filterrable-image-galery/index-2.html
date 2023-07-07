@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Slider Tabs Like YouTube in HTML CSS & JavaScript | Slider Tabs in JavaScript</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="css/style-2.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="icon"><i id="left" class="fas fa-angle-left"></i>
+        </div>
+            <ul class="tabs-box">
+                <li class="tab">Coding</li>
+                <li class="tab active">Javascript</li>
+                <li class="tab">Podcasts</li>
+                <li class="tab">Databases</li>
+                <li class="tab">Web Development</li>
+                <li class="tab">Unboxing</li>
+                <li class="tab">History</li>
+                <li class="tab">Programming</li>
+                <li class="tab">Gadgets</li>
+                <li class="tab">Algorithms</li>
+                <li class="tab">Comedy</li>
+                <li class="tab">Gaming</li>
+                <li class="tab">Share Market</li>
+                <li class="tab">Smartphones</li>
+                <li class="tab">Data Structure</li>
+            </ul>
+        <div class="icon"><i id="right" class="fas fa-angle-right"></i></div>
+    </div>
+    <script>
+        const tabsBox = document.querySelector(".tabs-box"),
+        allTabs = document.querySelectorAll(".tab"),
+        arrowIcons = document.querySelectorAll(".icon i");
+
+        let isDragging = false;
+
+        const handleIcons = () =>{
+            let scrollVal = Math.round(tabsBox.scrollLeft);
+            let maxScrollableWidth = tabsBox.scrollWidth - tabsBox.clientWidth;
+            arrowIcons[0].parentElement.style.display = scrollVal > 0 ? "flex" : "none";
+            arrowIcons[1].parentElement.style.display = maxScrollableWidth > scrollVal ? "flex" : "none";
+        }
+
+        arrowIcons.forEach(icon => {
+            icon.addEventListener("click", () => {
+                // console.log(icon.id);
+                // if clicked icon is left, reduce 350 from tabsBox scrollLeft else add
+                tabsBox.scrollLeft += icon.id === "left" ? -350 :350;
+                setTimeout(() => handleIcons(), 50); // calling handleicons after 50 miliseconds
+            });
+        });
+        allTabs.forEach(tab => {
+            tab.addEventListener("click", () => {
+                // removing active class from the previous tab & adding to current clicked tab
+                tabsBox.querySelector(".active").classList.remove("active");
+                tab.classList.add("active");
+            });
+        });
+        const dragging = (e) =>{
+            if(!isDragging) return;
+            tabsBox.classList.add("dragging");
+            tabsBox.scrollLeft -= e.movementX;
+            handleIcons();
+        }
+
+        const dragStop = () => {
+            isDragging = false;
+            tabsBox.classList.remove("dragging");
+        }
+        tabsBox.addEventListener("mousedown", () => isDragging = true);
+        tabsBox.addEventListener("mousemove", dragging);
+        document.addEventListener("mouseup", dragStop);
+    </script>
+</body>
+</html>

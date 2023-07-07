@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filterable Image Galery In HTML & Javascript</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="filter_buttons">
+            <button class="active" data-name="all">Show all</button>
+            <button data-name="phones">Phones</button>
+            <button data-name="clothes">Clothes</button>
+            <button data-name="shoes">Shoes</button>
+        </div>
+        <div class="filterable_cards">
+            <div class="card" data-name="phones">
+                <img src="images/phone-1.jpg" alt="">
+                <div class="card_body">
+                    <h6 class="card_title">Phone</h6>
+                    <p class="card_text">Lorem ipsum dolar...</p>
+                </div>
+            </div>
+            <div class="card" data-name="phones">
+                <img src="images/phone-2.jpg" alt="">
+                <div class="card_body">
+                    <h6 class="card_title">Phone</h6>
+                    <p class="card_text">Lorem ipsum dolar...</p>
+                </div>
+            </div>
+            <div class="card" data-name="clothes">
+                <img src="images/cloth-1.jpg" alt="">
+                <div class="card_body">
+                    <h6 class="card_title">Cloth</h6>
+                    <p class="card_text">Lorem ipsum dolar...</p>
+                </div>
+            </div>
+            <div class="card" data-name="clothes">
+                <img src="images/cloth-2.jpg" alt="">
+                <div class="card_body">
+                    <h6 class="card_title">Cloth</h6>
+                    <p class="card_text">Lorem ipsum dolar...</p>
+                </div>
+            </div>
+            <div class="card" data-name="clothes">
+                <img src="images/cloth-3.jpg" alt="">
+                <div class="card_body">
+                    <h6 class="card_title">Cloth</h6>
+                    <p class="card_text">Lorem ipsum dolar...</p>
+                </div>
+            </div>
+            <div class="card" data-name="shoes">
+                <img src="images/shoe-1.jpg" alt="">
+                <div class="card_body">
+                    <h6 class="card_title">Shoe</h6>
+                    <p class="card_text">Lorem ipsum dolar...</p>
+                </div>
+            </div>
+            <div class="card" data-name="shoes">
+                <img src="images/shoe-2.jpg" alt="">
+                <div class="card_body">
+                    <h6 class="card_title">Shoe</h6>
+                    <p class="card_text">Lorem ipsum dolar...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        //select all filter buttons  and filterable filterable_cards
+        const filterButtons = document.querySelectorAll(".filter_buttons button");
+        const filterableCards = document.querySelectorAll(".filterable_cards .card");
+
+        // console.log(filterButtons, filterableCards);
+
+
+        // Define the filtercards function 
+        const filterCards = e => {
+            document.querySelector(".active").classList.remove("active");
+            e.target.classList.add("active");
+            // console.log(e.target);
+
+            // Iterate over each filterable card 
+            filterableCards.forEach(card => {
+                // Add "hide" class to hide ther card initially 
+                card.classList.add("hide");
+                // check if the card matches the selected filter or "all" is selected 
+                if(card.dataset.name === e.target.dataset.name || e.target.dataset.name === "all"){
+                    card.classList.remove("hide");
+                }
+            });
+        }
+        // Add click event listener to each filter button
+        filterButtons.forEach(button => button.addEventListener("click", filterCards));
+    </script>
+</body>
+</html>
