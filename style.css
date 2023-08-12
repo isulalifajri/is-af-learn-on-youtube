@@ -10,6 +10,14 @@
     padding:20px;
     text-align: center;
 }
+.container .first{
+    background-color: aliceblue;
+    border-radius: 2px;
+}
+.container p{
+    font-size: 20px;
+    padding: 10px;
+}
 .container h1{
     margin:30px 0;
 }
