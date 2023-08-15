@@ -57,7 +57,7 @@
     object-fit: cover;
 }
 .image-container .box{
-    margin: 2rem;
+    margin: 0rem;
 }
 @media (max-width:550px){
     .image-container .image img{
