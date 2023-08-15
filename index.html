@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studying HTML CSS JS In Youtube</title>
+
+     <!-- swiper cdn link -->
+     <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,6 +15,31 @@
     <div class="container">
         <div class="first">
             <p>Halaman ini di buat untuk menyimpan hasil belajar saya dari youtube</p>
+        </div>
+        <div class="swiper image-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide box">
+                    <div class="image">
+                        <img src="./1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide box">
+                    <div class="image">
+                        <img src="./2.jpg" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide box">
+                    <div class="image">
+                        <img src="./3.jpg" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide box">
+                    <div class="image">
+                        <img src="./4.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
         </div>
         <h1>Pilih salah satu Menu</h1>
         <div class="menu">
@@ -29,6 +58,41 @@
         </div>
     </div>
 </section>
+
+
+
+ <!-- swiper cdn js link -->
+ <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script> 
+
+ <script>
+    var swiper = new Swiper(".image-container", {
+    loop: true,
+    spaceBetween: 10,
+    autoplay: {
+        delay: 7500,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    centeredSlides: true,
+    breakpoints: {
+      0: {
+        slidesPerView: 2,
+      },
+      450: {
+        slidesPerView: 2,
+      },
+      768: {
+        slidesPerView: 3,
+      },
+      1024: {
+        slidesPerView: 4,
+      },
+    },
+  });
+ </script>
     
 </body>
 </html>

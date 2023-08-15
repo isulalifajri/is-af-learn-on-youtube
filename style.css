@@ -46,3 +46,23 @@
     text-decoration: none;
     font-size: 10px;
 }
+.image-container{
+    text-align: center;
+    margin-top: 2rem;
+    border-bottom: 1px solid #dfdfdf;
+}
+.image-container .image img{
+    height: 15rem;
+    width: 100%;
+    object-fit: cover;
+}
+.image-container .box{
+    margin: 2rem;
+}
+@media (max-width:550px){
+    .image-container .image img{
+        height: auto;
+        padding: 0;
+    }
+
+}
